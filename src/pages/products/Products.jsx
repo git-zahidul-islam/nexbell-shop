@@ -32,7 +32,7 @@ const Products = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row gap-6 md:pr-5 md:px-0 px-2 md:mt-5">
+    <section className="min-h-screen flex flex-col md:flex-row gap-6 md:pr-5 md:px-0 px-2">
       {/* Hamburger Menu for mobile */}
       <div className="md:hidden flex justify-between items-center px-4 py-3 bg-white shadow">
         {/* button */}
@@ -64,7 +64,7 @@ const Products = () => {
         {/* filter and sorting by category */}
         <div className="py-5">
         {/* search ber for big screen */}
-        <input onChange={(e) => setSearchTerm(e.target.value)} type="search" name="search" id="search" placeholder="search" className="md:block hidden p-2 rounded outline-none border border-black/45" />
+        <input onChange={(e) => setSearchTerm(e.target.value)} type="search" name="search" id="search" placeholder="search" className="md:block hidden p-2 rounded outline-none border border-black/45 w-[175px]" />
 
           {/* filter */}
           <div>
