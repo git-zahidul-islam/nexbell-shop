@@ -6,6 +6,7 @@ import Dashboard from "../root/dashboardLayout/dashboard/Dashboard";
 import AddProducts from "../root/dashboardLayout/addProducts/AddProducts";
 import Products from "../pages/products/Products";
 import ProductsDetails from "../pages/productsDetails/ProductsDetails";
+import EditProducts from "../pages/EditProducts/EditProducts";
 
 
 export const router = createBrowserRouter([
@@ -37,9 +38,13 @@ export const router = createBrowserRouter([
         },
         {
           path: 'add-products',
-          element: <AddProducts/> // Example child route
+          element: <AddProducts/>
+        },
+        {
+          path: 'edit',
+          element: <EditProducts/>
         }
-        // You can add more dashboard routes here
+       
       ]
     }
     

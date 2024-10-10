@@ -13,6 +13,9 @@ const DashboardLayout = () => {
             <li className="w-full bg-[#F58515] px-3 py-1">
               <Link className="font-bold w-full" to={"/dashboard/add-products"}>Add Products</Link>
             </li>
+            <li className="w-full bg-[#F58515] px-3 py-1">
+              <Link className="font-bold w-full" to={"/dashboard/edit"}>Edit / Update</Link>
+            </li>
           </ul>
         </div>
         {/* b to h */}
