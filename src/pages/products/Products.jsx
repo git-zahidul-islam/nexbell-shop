@@ -1,10 +1,13 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
   const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle filter visibility
   const [searchTerm, setSearchTerm] = useState("");
+  const [products,setProducts] = useState([]);
   
   console.log(searchTerm);
 
@@ -30,6 +33,16 @@ const Products = () => {
     setSelectedCategories(updatedCategories);
     console.log(updatedCategories);
   };
+
+  // data fetch start
+  useEffect(()=>{
+    const productsFetch = async () => {
+      const res = await axios.get('https://dummyjson.com/products')
+      setProducts(res.data?.products)
+    }
+    productsFetch();
+  },[])
+  console.log(products);
 
   return (
     <section className="min-h-screen flex flex-col md:flex-row gap-6 md:pr-5 md:px-0 px-2">
@@ -135,25 +148,25 @@ const Products = () => {
       </div>
 
       {/* products show section */}
-      <div className="w-full md:w-[85%]">
+      <div className="w-full md:w-[85%] mb-10">
         <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
           {/* product card */}
-          {Array(7).fill().map((_, index) => (
-            <div key={index} className="bg-[#fff]">
+          {products.map((product) => (
+            <div key={product.id} className="bg-[#fff]">
               <div className="">
-                <img src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20221031_1667200682_470514.jpeg" alt="image" />
+                <img className="w-full h-[224px]" src={product.thumbnail} alt="image" />
               </div>
-              <p className="text-center text-base font-medium text-black/80">Electronic</p>
-              <h2 className="text-lg font-semibold text-black/95 flex justify-center flex-wrap py-1">
-                StyView 19 inch Monitor
+              <p className="text-center text-base font-medium text-black/80">{product.category}</p>
+              <h2 className="text-lg font-semibold text-black/95 flex justify-center flex-wrap py-1 text-center">
+                {product.title}
               </h2>
               <div className="pb-[2px]">
-                <strong className="text-black/70 flex justify-center">TK. 119$</strong>
-                <p className="flex justify-center text-sm">Rating: 4.3 s</p>
+                <strong className="text-black/70 flex justify-center">TK. {product.price}$</strong>
+                <p className="flex justify-center text-sm">Rating: {product.rating}</p>
               </div>
               {/* button */}
               <div>
-                <button className="w-full bg-yellow-500 font-semibold text-xl text-white/90 py-2">Details</button>
+                <Link to={`products/${product.id}`} className="w-full block text-center bg-yellow-500 font-semibold text-xl text-white/90 py-2">Details</Link>
               </div>
             </div>
           ))}
@@ -165,11 +178,10 @@ const Products = () => {
 };
 
 const categories = [
-  { id: 1, name: "Electronics" },
-  { id: 2, name: "Clothing" },
-  { id: 3, name: "Home & Kitchen" },
-  { id: 4, name: "Books" },
-  { id: 5, name: "Beauty" },
+  { id: 1, name: "groceries" },
+  { id: 2, name: "furniture" },
+  { id: 3, name: "fragrances" },
+  { id: 4, name: "beauty" },
 ];
 
 export default Products;
