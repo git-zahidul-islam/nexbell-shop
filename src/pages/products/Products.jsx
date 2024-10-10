@@ -145,7 +145,7 @@ const Products = () => {
             </div>
             <button
               onClick={handleApplyFilter}
-              className="w-full bg-[#f58515e7] text-white p-2 rounded hover:bg-[#F58515]"
+              className="w-full bg-[#f58515e7] text-white p-2 hover:bg-[#F58515]"
             >
               Apply Filter
             </button>
@@ -155,28 +155,31 @@ const Products = () => {
 
       {/* products show section */}
       <div className="w-full md:w-[85%] mb-10">
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
-          {/* product card */}
-          {products.map((product) => (
-            <div key={product.id} className="bg-[#fff]">
-              <div className="">
-                <img className="w-full h-[224px]" src={product.thumbnail} alt="image" />
-              </div>
-              <p className="text-center text-base font-medium text-black/80">{product.category}</p>
-              <h2 className="text-lg font-semibold text-black/95 flex justify-center flex-wrap py-1 text-center">
-                {product.title}
-              </h2>
-              <div className="pb-[2px]">
-                <strong className="text-black/70 flex justify-center">TK. {product.price}$</strong>
-                <p className="flex justify-center text-sm">Rating: {product.rating}</p>
-              </div>
-              {/* button */}
-              <div>
-                <Link to={`products/${product.id}`} className="w-full block text-center bg-yellow-500 font-semibold text-xl text-white/90 py-2">Details</Link>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
+  {/* product card */}
+  {products.map((product) => (
+    <div key={product.id} className="bg-[#fff] flex flex-col justify-between h-full">
+      <div>
+        <img className="w-full h-[224px] object-cover" src={product.thumbnail} alt="image" />
+        <p className="text-center text-base font-medium text-black/80 mt-2">{product.category}</p>
+        <h2 className="text-lg font-semibold text-black/95 flex justify-center flex-wrap py-1 text-center">
+          {product.title}
+        </h2>
+      </div>
+      <div className="pb-[2px]">
+        <strong className="text-black/70 flex justify-center">TK. {product.price}$</strong>
+        <p className="flex justify-center text-sm">Rating: {product.rating}</p>
+      </div>
+      {/* button */}
+      <div>
+        <Link to={`products/${product.id}`} className="w-full block text-center bg-[#F58515] font-semibold text-xl text-white/90 py-2">
+          Details
+        </Link>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
       
     </section>
