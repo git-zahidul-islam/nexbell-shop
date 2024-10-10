@@ -8,7 +8,9 @@ const Products = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle filter visibility
   const [searchTerm, setSearchTerm] = useState("");
   const [products,setProducts] = useState([]);
-  
+  const [categories,setCategories] = useState([]);
+
+  console.log(categories);
   console.log(searchTerm);
 
   // filter price fun
@@ -39,6 +41,10 @@ const Products = () => {
     const productsFetch = async () => {
       const res = await axios.get('https://dummyjson.com/products')
       setProducts(res.data?.products)
+
+      // unique category
+      const uniqueCategories = [...new Set(res.data.products.map((product) => product.category))];
+      setCategories(uniqueCategories);
     }
     productsFetch();
   },[])
@@ -84,20 +90,20 @@ const Products = () => {
           <h2 className="text-lg font-bold mb-1">Filter by Category</h2>
           <div className="space-y-2">
             {categories.map((category) => (
-              <div key={category.id} className="flex items-center">
+              <div key={category} className="flex items-center">
                 <input
                   type="checkbox"
-                  id={`category-${category.id}`}
+                  id={`id-${category}`}
                   className="mr-2"
-                  value={category.name}
-                  onChange={() => handleCheckboxChange(category.name)}
-                  checked={selectedCategories.includes(category.name)}
+                  value={category}
+                  onChange={() => handleCheckboxChange(category)}
+                  checked={selectedCategories.includes(category)}
                 />
                 <label
-                  htmlFor={`category-${category.id}`}
+                  htmlFor={`id${category}`}
                   className="text-gray-700"
                 >
-                  {category.name}
+                  {category}
                 </label>
               </div>
             ))}
@@ -176,12 +182,5 @@ const Products = () => {
     </section>
   );
 };
-
-const categories = [
-  { id: 1, name: "groceries" },
-  { id: 2, name: "furniture" },
-  { id: 3, name: "fragrances" },
-  { id: 4, name: "beauty" },
-];
 
 export default Products;
