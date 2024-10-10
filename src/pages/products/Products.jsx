@@ -4,6 +4,9 @@ const Products = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
   const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle filter visibility
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  console.log(searchTerm);
 
   // filter price fun
   const handlePriceChange = (e) => {
@@ -41,7 +44,7 @@ const Products = () => {
         </button>
 
         {/* search bar */}
-        <input type="search" name="search" id="search" placeholder="search" className="p-2 rounded outline-none border border-black/45" />
+        <input onChange={(e) => setSearchTerm(e.target.value)} type="search" name="search" id="search" placeholder="search" className="p-2 rounded outline-none border border-black/45" />
 
       </div>
 
@@ -61,7 +64,7 @@ const Products = () => {
         {/* filter and sorting by category */}
         <div className="py-5">
         {/* search ber for big screen */}
-        <input type="search" name="search" id="search" placeholder="search" className="md:block hidden p-2 rounded outline-none border border-black/45" />
+        <input onChange={(e) => setSearchTerm(e.target.value)} type="search" name="search" id="search" placeholder="search" className="md:block hidden p-2 rounded outline-none border border-black/45" />
 
           {/* filter */}
           <div>
