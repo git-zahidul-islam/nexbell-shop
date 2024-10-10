@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Logo & About Section */}
         <div className="flex flex-col items-start">
-          <h2 className="text-xl font-semibold">ShopEasy</h2>
+          <h2 className="text-xl font-semibold">Nexbell Shop</h2>
           <p className="mt-2 text-gray-400">
             Your one-stop shop for all things fashion, electronics, and more. Shop smart with ShopEasy.
           </p>
@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-6 border-t border-gray-700 pt-4 text-center text-gray-400">
-        © 2024 ShopEasy. All rights reserved.
+        © 2024 Nexbell Shop. All rights reserved.
       </div>
     </footer>
   );

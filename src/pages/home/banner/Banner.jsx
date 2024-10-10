@@ -4,10 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
-// images
-// import img1 from '../assets/banImg1.jpg';
-// import img2 from '../assets/banImg2.jpg';
-// import img3 from '../../assets/Images/home-page/banner.jpg'
+
 
 const Banner = () => {
   const prevRef = useRef(null);

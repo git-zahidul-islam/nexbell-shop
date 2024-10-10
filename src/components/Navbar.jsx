@@ -35,9 +35,6 @@ const Navbar = () => {
             <Link className="text-xl font-normal" to="/products">
               Products
             </Link>
-            <Link className="text-xl font-normal" to="#">
-              About me
-            </Link>
             <Link className="text-xl font-normal" to="/dashboard">
               Dashboard
             </Link>
@@ -63,9 +60,6 @@ const Navbar = () => {
           </Link>
           <Link to="/products" className="block px-4 py-2">
             Products
-          </Link>
-          <Link to="#" className="block px-4 py-2">
-            About me
           </Link>
           <Link to="/dashboard" className="block px-4 py-2">
             Dashboard

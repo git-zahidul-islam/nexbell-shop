@@ -17,7 +17,7 @@ const HomeProduct = () => {
     return (
         <div className="md:w-[90%] w-full mx-auto pb-10">
             <h1 className="md:text-2xl text-xl font-bold">Products</h1>
-            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
+            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-3 mt-5">
           {products.length > 0 ? (
             products.map((product) => (
               <div
@@ -61,6 +61,11 @@ const HomeProduct = () => {
             </p>
           )}
         </div>
+
+          <div className="flex justify-center mt-5">
+
+        <Link to={'/products'} className="bg-[#F58515] px-5 py-2 text-xl font-semibold text-white/90">More</Link>
+          </div>
         </div>
     );
 };
