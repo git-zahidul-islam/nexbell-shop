@@ -139,12 +139,22 @@ const Products = () => {
         <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
           {/* product card */}
           {Array(7).fill().map((_, index) => (
-            <div key={index} className="space-y-3">
-              <div className="bg-green-400 h-32 w-full"></div>
-              <p className="text-lg font-semibold text-black/95">
+            <div key={index} className="bg-[#fff]">
+              <div className="">
+                <img src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20221031_1667200682_470514.jpeg" alt="image" />
+              </div>
+              <p className="text-center text-base font-medium text-black/80">Electronic</p>
+              <h2 className="text-lg font-semibold text-black/95 flex justify-center flex-wrap py-1">
                 StyView 19 inch Monitor
-              </p>
-              <strong className="block text-black/70">Price: 119$</strong>
+              </h2>
+              <div className="pb-[2px]">
+                <strong className="text-black/70 flex justify-center">TK. 119$</strong>
+                <p className="flex justify-center text-sm">Rating: 4.3 s</p>
+              </div>
+              {/* button */}
+              <div>
+                <button className="w-full bg-yellow-500 font-semibold text-xl text-white/90 py-2">Details</button>
+              </div>
             </div>
           ))}
         </div>
