@@ -96,7 +96,7 @@ const EditProducts = () => {
                                 <td className="py-4 px-6 border">$ {product.price}</td>
                                 <td className="py-4 px-6 border">{product.stock}</td>
                                 <td className="py-4 px-6 border flex justify-center gap-2">
-                                    <Link to={`/dashboard/products/edit/update/${product.id}`}>
+                                    <Link to={`/dashboard/edit/${product.id}`}>
                                         <button className="px-4 py-2 bg-[#F58515] text-white text-xs hover:bg-[#f58515da] transition-all">
                                             Update
                                         </button>
