@@ -207,7 +207,7 @@ const Products = () => {
                 </div>
                 <div>
                   <Link
-                    to={`products/${product.id}`}
+                    to={`/products/${product.id}`}
                     className="w-full block text-center bg-[#F58515] font-semibold text-xl text-white/90 py-2"
                   >
                     Details
