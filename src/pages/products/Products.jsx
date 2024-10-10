@@ -164,12 +164,6 @@ const Products = () => {
                   placeholder="Enter max price"
                 />
               </div>
-              <button
-                onClick={() => console.log("Filter applied")}
-                className="w-full bg-[#f58515e7] text-white p-2 hover:bg-[#F58515]"
-              >
-                Apply Filter
-              </button>
             </div>
           </div>
         </div>
@@ -177,7 +171,7 @@ const Products = () => {
 
       {/* Products display */}
       <div className="w-full md:w-[85%] mb-10">
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-3 mt-5">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 md:gap-5 gap-3 mt-5">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <div

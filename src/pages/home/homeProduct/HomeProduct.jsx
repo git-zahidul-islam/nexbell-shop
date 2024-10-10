@@ -15,9 +15,9 @@ const HomeProduct = () => {
       }, []);
 
     return (
-        <div className="md:w-[90%] w-full mx-auto pb-10">
+        <div className="md:w-[90%] w-full mx-auto pb-10 md:px-0 px-2">
             <h1 className="md:text-2xl text-xl font-bold">Products</h1>
-            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-3 mt-5">
+            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 md:gap-5 gap-3 mt-5">
           {products.length > 0 ? (
             products.map((product) => (
               <div
