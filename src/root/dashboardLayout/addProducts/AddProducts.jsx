@@ -1,10 +1,11 @@
+import ProductForm from "../../../components/ProductForm";
 
-const AddProducts = () => {
-    return (
-        <div>
-            <p>add products</p>
-        </div>
-    );
+const AddProduct = () => {
+  return (
+    <>
+      <ProductForm type="add" />
+    </>
+  );
 };
 
-export default AddProducts;
+export default AddProduct;
