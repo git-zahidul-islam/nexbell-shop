@@ -3,6 +3,7 @@ import { useState } from "react";
 const Products = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle filter visibility
 
   // filter price fun
   const handlePriceChange = (e) => {
@@ -16,7 +17,7 @@ const Products = () => {
     console.log(`Min Price: ${priceRange.min}, Max Price: ${priceRange.max}`);
   };
 
-  //   filter by category
+  // filter by category
   const handleCheckboxChange = (category) => {
     const isChecked = selectedCategories.includes(category);
     const updatedCategories = isChecked
@@ -24,15 +25,46 @@ const Products = () => {
       : [...selectedCategories, category];
 
     setSelectedCategories(updatedCategories);
-    console.log(updatedCategories); // Log the selected categories
+    console.log(updatedCategories);
   };
 
   return (
-    <section className="min-h-screen flex gap-5 pr-5">
-      {/* left side ber */}
-      <div className="w-[15%] border-r border-black px-4 h-screen">
-        {/* filter by category */}
+    <section className="min-h-screen flex flex-col md:flex-row gap-6 md:pr-5 md:px-0 px-2 md:mt-5">
+      {/* Hamburger Menu for mobile */}
+      <div className="md:hidden flex justify-between items-center px-4 py-3 bg-white shadow">
+        {/* button */}
+        <button
+          onClick={() => setIsFilterOpen(true)}
+          className="text-2xl p-2 bg-gray-200 rounded"
+        >
+          &#9776;
+        </button>
+
+        {/* search bar */}
+        <input type="search" name="search" id="search" placeholder="search" className="p-2 rounded outline-none border border-black/45" />
+
+      </div>
+
+      {/* Sidebar - Fullscreen on Mobile */}
+      <div
+        className={`fixed inset-0 z-50 bg-white px-5 transition-transform duration-300 md:w-[15%] md:relative md:translate-x-0 h-screen md:h-auto ${
+          isFilterOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <button
+          onClick={() => setIsFilterOpen(false)}
+          className="absolute top-4 right-4 text-2xl p-2 bg-gray-200 rounded md:hidden"
+        >
+          &times;
+        </button>
+
+        {/* filter and sorting by category */}
         <div className="py-5">
+        {/* search ber for big screen */}
+        <input type="search" name="search" id="search" placeholder="search" className="md:block hidden p-2 rounded outline-none border border-black/45" />
+
+          {/* filter */}
+          <div>
           <h2 className="text-lg font-bold mb-1">Filter by Category</h2>
           <div className="space-y-2">
             {categories.map((category) => (
@@ -53,6 +85,7 @@ const Products = () => {
                 </label>
               </div>
             ))}
+          </div>
           </div>
         </div>
 
@@ -98,53 +131,22 @@ const Products = () => {
         </div>
       </div>
 
-      {/* products show ber */}
-      <div className="w-[85%]">
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 py-7">
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
+      {/* products show section */}
+      <div className="w-full md:w-[85%]">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-3 mt-5">
+          {/* product card */}
+          {Array(7).fill().map((_, index) => (
+            <div key={index} className="space-y-3">
+              <div className="bg-green-400 h-32 w-full"></div>
+              <p className="text-lg font-semibold text-black/95">
+                StyView 19 inch Monitor
+              </p>
+              <strong className="block text-black/70">Price: 119$</strong>
             </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
-            {/* product 1 */}
-            <div className="space-y-3">
-                <div className="bg-green-400 h-32 w-full"></div>
-                <p className="text-lg font-semibold text-black/95">StyView 19 inch Movitor</p>
-                <strong className="block text-black/70">Price: 119$</strong>
-            </div>
+          ))}
         </div>
       </div>
+      
     </section>
   );
 };
